@@ -8,7 +8,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack && qode ./dist/index.js",
-    "debug": "webpack && qode --inspect ./dist/index.js"
+    "debug": "webpack && qode --inspect ./dist/index.js",
+    "pack": "npx nodegui-packer --pack ./dist"
   },
   "dependencies": {
     "@nodegui/nodegui": "^0.50.0"
