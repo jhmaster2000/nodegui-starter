@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "target": "es2021",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
     "allowJs": false,
     "checkJs": false,
     "rootDir": "./src",
