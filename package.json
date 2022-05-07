@@ -1,15 +1,19 @@
 {
   "name": "nodegui-starter",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "author": "Atul R <atulanand94@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack && qode ./dist/index.js",
-    "debug": "webpack && qode --inspect ./dist/index.js",
-    "pack": "npx nodegui-packer --pack ./dist"
+    "start": "qode ./dist/index.js",
+    "debug": "qode --inspect ./dist/index.js",
+    "cleandist": "node -e \"fs.rm('dist', { recursive: true }, ()=>{});\"",
+    "cleanbuild": "node -e \"fs.rm('deploy/win32/build', { recursive: true }, ()=>{});\"",
+    "copynodegui": "xcopy node_modules\\@nodegui\\nodegui\\build\\Release\\nodegui_core.node dist\\",
+    "build": "npm run cleandist && npm run copynodegui && tsc",
+    "pack": "npm run cleanbuild && nodegui-packer --pack ./dist"
   },
   "dependencies": {
     "@nodegui/nodegui": "^0.50.0"
@@ -17,12 +21,6 @@
   "devDependencies": {
     "@nodegui/packer": "^1.4.1",
     "@types/node": "^17.0.31",
-    "clean-webpack-plugin": "^4.0.0",
-    "file-loader": "^6.2.0",
-    "native-addon-loader": "^2.0.1",
-    "ts-loader": "^9.2.5",
-    "typescript": "^4.3.5",
-    "webpack": "^5.49.0",
-    "webpack-cli": "^4.7.2"
+    "typescript": "^4.3.5"
   }
 }
